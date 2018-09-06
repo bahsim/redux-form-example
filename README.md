@@ -1,4 +1,4 @@
-# redux-form-antd
+# spa-react-express-mongo
 
 This is a demo app.
 

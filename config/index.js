@@ -6,7 +6,7 @@ let Config = function () {
 	return {
 		//appMode:	"production",
 		appMode:	"development",
-		appPort:	"80",
+		appPort:	"8080",
 		pathStatic: "frontend/dist", 
 	};
 };
