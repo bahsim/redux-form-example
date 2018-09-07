@@ -12,11 +12,9 @@ export default ({
 }) => (
 	<div>
 		<Input 
-			className='mobilePhoneInput'
 			{...input} 
 			type={type} 
-			prefix={<Icon type="phone" 
-			style={{ color: 'rgba(0,0,0,.25)' }} />} 
+			prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />} 
 			placeholder={label} 
 		/>
 		{touched &&

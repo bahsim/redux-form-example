@@ -29,6 +29,32 @@ const formSubmit = (e) =>{
 		});
 }
 
+const normalizePhone = (value, previousValue) => {
+  if (!value) return value
+	const onlyNums = value.replace(/[^\d]/g, '')	
+	switch(onlyNums.length) {
+		case 	1: return onlyNums.slice(0, 1)
+		case 	2: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 2)
+		case 	3: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 3)
+		case 	4: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 4)
+		case 	5: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 4) + ') ' + onlyNums.slice(4, 5)
+		case 	6: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 4) + ') ' + onlyNums.slice(4, 6)
+		case 	7: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 4) + ') ' + onlyNums.slice(4, 7)
+		case 	8: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 4) + ') ' + onlyNums.slice(4, 7) + '-' + onlyNums.slice(7, 8)
+		case 	9: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 4) + ') ' + onlyNums.slice(4, 7) + '-' + onlyNums.slice(7, 9)
+		case 10: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 4) + ') ' + onlyNums.slice(4, 7) + '-' + onlyNums.slice(7, 9) + '-' + onlyNums.slice(9, 10)
+		default: return onlyNums.slice(0, 1) + ' (' + onlyNums.slice(1, 4) + ') ' + onlyNums.slice(4, 7) + '-' + onlyNums.slice(7, 9) + '-' + onlyNums.slice(9, 11)
+	}
+}
+
+const normalizeEmail = (value, previousValue) => {
+	if (!value) return value
+	//value.toLowerCase()
+	return value.replace(/[^0-9A-Za-z@.]/g, '').toLowerCase();
+	//"a100.dfwe".replace(/[^0-9]+/g, "");
+	//return value.replace(/[^0-9A-Za-z]+/g, '')
+	
+}
 const lower = value => value && value.toLowerCase();
 
 const FormMix = props => {
@@ -40,7 +66,7 @@ const FormMix = props => {
 				label="Телефон"
 				component={Telephone}
 				type="text"
-				validate={required}
+				normalize={normalizePhone}
 			/>
 			<br/>
 			<Field
@@ -48,7 +74,7 @@ const FormMix = props => {
 				label="e-mail"
 				component={Email}
 				type="text"
-				normalize={lower}
+				normalize={normalizeEmail}
 			/>
 			<br/>
 			<Button htmlType="submit" type="primary" disabled={pristine || submitting}>

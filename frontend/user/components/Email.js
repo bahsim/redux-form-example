@@ -12,11 +12,9 @@ export default ({
 }) => (
 	<div>
 		<Input 
-			className="mobileEmailInput"
 			{...input} 
 			type={type} 
-			prefix={<Icon type="mail" 
-			style={{ color: 'rgba(0,0,0,.25)' }} />} 
+			prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} 
 			placeholder={label} 
 		/>
 		{touched &&
